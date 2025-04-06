@@ -1,29 +1,30 @@
-import { Link } from 'expo-router';
-import { Text, View,  StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default function Index() {
+export default function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello StickerSmash!</Text>
-      <Link href={"/about"} style={styles.button}>Go to About screen</Link>
+      <Text style={styles.title}>Contador: {count}</Text>
+      <TouchableOpacity style={styles.button} onPress={() => setCount(count + 1)}>
+        <Text style={styles.buttonText}>Sumar</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    backgroundColor: '#25292e',
-    alignItems: 'center'
+    flex: 1, justifyContent: 'center', alignItems: 'center',
   },
-  text: {
-    color: '#fff',
+  title: {
+    fontSize: 24, marginBottom: 20,
   },
-  button : {
-    fontSize: 20,
-    textDecorationLine: "underline",
-    color: "#fff"
-  }
+  button: {
+    backgroundColor: '#4CAF50', padding: 10, borderRadius: 5,
+  },
+  buttonText: {
+    color: '#fff', fontSize: 18,
+  },
 });
-
